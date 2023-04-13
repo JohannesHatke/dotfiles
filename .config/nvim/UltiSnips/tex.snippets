@@ -1,0 +1,65 @@
+snippet set "\{ \}"
+\\{$1\\}
+endsnippet
+
+snippet qed "simple square at end of file" b
+$\hfill \blacksquare$
+endsnippet
+
+snippet kk "\" wA
+\\$1
+endsnippet
+
+snippet frac "\frac" wA
+\frac{$1}{$2}$3
+endsnippet
+
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+$0
+\end{$1}
+endsnippet
+
+snippet sum "sum_{}^{}" w
+\sum_{$1}^{$2}$0
+endsnippet
+
+snippet ovl "overline{}" w
+\overline{$1}$0
+endsnippet
+
+snippet unl "underline{}" w
+\underline{$1}$0
+endsnippet
+
+snippet _ "_{}" 
+_{$1}
+endsnippet
+
+snippet bb "\mathbb{}" w
+\mathbb{$1}$0
+endsnippet
+
+snippet mm "inline math" wA
+$$1$$2
+endsnippet
+
+snippet mk "full math"
+$$
+$1
+$$
+endsnippet
+
+snippet func "{}:{}->{},\ x|->{}"
+$1:\ $2 \to $3,\quad x\mapsto $4
+$0
+endsnippet
+
+
+snippet tx "\text{}" 
+\text{$1}$0
+endsnippet
+
+snippet cd "\cdot"
+\cdot 
+endsnippet
