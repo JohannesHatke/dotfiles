@@ -221,7 +221,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -284,7 +284,7 @@ require('nvim-treesitter.configs').setup {
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -431,6 +431,22 @@ cmp.setup {
 
 
 -- custom:
+--
+
+local wk = require('which-key')
+wk.register({
+  q =   { "Exit into Folder" }
+}, { prefix = "<leader>" })
+
+-- example of how to add more which key bindings:
+-- example uses -ll and -lc
+-- wk.register({
+--   ["l"] =  { ["l"]  =   { "compile" } ,
+--     ["c"]  =   { "clean" } ,
+--   }
+-- }, { prefix = "<localleader>" })
+
+vim.keymap.set('n','<leader>q',vim.cmd.Ex)
 vim.cmd[[
 filetype plugin indent on
 
@@ -446,6 +462,8 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 ]]
+
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

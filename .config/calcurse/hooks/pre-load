@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#echo test
+pwd | xclip -selection c
+python3 scripts/updateGoals.py

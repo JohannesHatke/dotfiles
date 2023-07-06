@@ -24,4 +24,13 @@ return function(use)
 
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
+
+  -- ranger integration
+  use({
+    "rbgrouleff/bclose.vim"
+  })
+
+  use({
+     'francoiscabrol/ranger.vim'
+  })
 end

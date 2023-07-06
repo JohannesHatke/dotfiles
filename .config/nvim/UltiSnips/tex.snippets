@@ -24,6 +24,10 @@ snippet sum "sum_{}^{}" w
 \sum_{$1}^{$2}$0
 endsnippet
 
+snippet prod "prod_{}^{}" w
+\prod_{$1}^{$2}$0
+endsnippet
+
 snippet ovl "overline{}" w
 \overline{$1}$0
 endsnippet
@@ -39,6 +43,11 @@ endsnippet
 snippet bb "\mathbb{}" w
 \mathbb{$1}$0
 endsnippet
+
+snippet cal "\mathcal{}" w
+\mathcal{$1}$0
+endsnippet
+
 
 snippet mm "inline math" wA
 $$1$$2
@@ -60,6 +69,34 @@ snippet tx "\text{}"
 \text{$1}$0
 endsnippet
 
+snippet bf "\textbf{}" 
+\textbf{$1}$0
+endsnippet
+
 snippet cd "\cdot"
 \cdot 
+endsnippet
+
+snippet  sc "include latest screenshot at scale 0.22" b
+\includegraphics[scale=0.22]{`!p
+import glob
+import os
+list_of_files = glob.glob('/home/johannes/Pictures/Screenshots/*')
+latest_file =  max(list_of_files, key=os.path.getctime)
+snip.rv += str(latest_file)
+`}\\\\
+$0
+endsnippet
+
+snippet sec "\(sub)(sub)section{}" bA
+\section{$1}
+$0
+endsnippet
+snippet ssec "\subsection{}" bA
+\subsection{$1}
+$0
+endsnippet
+snippet sssec "\subsubsection{}" bA
+\subsubsection{$1}
+$0
 endsnippet
