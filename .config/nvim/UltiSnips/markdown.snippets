@@ -3,18 +3,23 @@ extends tex
 priority 10
 
 
-snippet mm "inline math" wA
+
+context "vim.current.buffer.name[:5] == '/tmp/'"
+snippet mm "inline math (only used inside of /tmp/ for apy" wA
 \($1\)$2
 endsnippet
 
-snippet mk "full math"
+
+context "vim.current.buffer.name[:5] == '/tmp/'"
+snippet mk "inline math (only used inside of /tmp/ for apy"
 \[
 $1
 \]
 endsnippet
 
 
-snippet NN "New Note"
+context "vim.current.buffer.name[:5] == '/tmp/'"
+snippet NN "New Note (only used inside of /tmp/ for apy"
 
 # Note 
 
