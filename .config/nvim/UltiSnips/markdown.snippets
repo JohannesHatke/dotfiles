@@ -1,9 +1,6 @@
 extends tex
 
 priority 10
-
-
-
 context "vim.current.buffer.name[:5] == '/tmp/'"
 snippet mm "inline math (only used inside of /tmp/ for apy" wA
 \($1\)$2
@@ -27,5 +24,16 @@ snippet NN "New Note (only used inside of /tmp/ for apy"
 $1
 ## Back 
 $2
-
 endsnippet
+
+snippet  sc "include latest screenshot at scale" b
+![](`!p
+import glob
+import os
+list_of_files = glob.glob('/home/johannes/Pictures/Screenshots/*')
+latest_file =  max(list_of_files, key=os.path.getctime)
+snip.rv += str(latest_file).replace(" ","%20")
+`)
+$0
+endsnippet
+

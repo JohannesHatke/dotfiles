@@ -447,6 +447,7 @@ wk.register({
 -- }, { prefix = "<localleader>" })
 
 vim.keymap.set('n','<leader>q',vim.cmd.Ex)
+vim.o.clipboard = "unnamedplus"
 vim.cmd[[
 filetype plugin indent on
 
