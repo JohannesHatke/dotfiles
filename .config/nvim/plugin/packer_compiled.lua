@@ -156,6 +156,12 @@ _G.packer_plugins = {
     path = "/home/johannes/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
+  ["obsidian.nvim"] = {
+    config = { "\27LJ\2\nÀ\1\0\0\5\0\a\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0004\3\3\0005\4\3\0>\4\1\0035\4\4\0>\4\2\3=\3\6\2B\0\2\1K\0\1\0\15workspaces\1\0\0\1\0\2\tpath\30~/Studium/vault/Semester5\tname\14Semester5\1\0\2\tpath ~/Studium/misc_vaults/Books\tname\nBooks\nsetup\robsidian\frequire\0" },
+    loaded = true,
+    path = "/home/johannes/.local/share/nvim/site/pack/packer/start/obsidian.nvim",
+    url = "https://github.com/epwalsh/obsidian.nvim"
+  },
   ["onedark.nvim"] = {
     loaded = true,
     path = "/home/johannes/.local/share/nvim/site/pack/packer/start/onedark.nvim",
@@ -175,6 +181,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/johannes/.local/share/nvim/site/pack/packer/start/ranger.vim",
     url = "https://github.com/francoiscabrol/ranger.vim"
+  },
+  ["rasmus.nvim"] = {
+    loaded = true,
+    path = "/home/johannes/.local/share/nvim/site/pack/packer/start/rasmus.nvim",
+    url = "https://github.com/kvrohit/rasmus.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     cond = { true },
@@ -223,6 +234,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: obsidian.nvim
+time([[Config for obsidian.nvim]], true)
+try_loadstring("\27LJ\2\nÀ\1\0\0\5\0\a\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0004\3\3\0005\4\3\0>\4\1\0035\4\4\0>\4\2\3=\3\6\2B\0\2\1K\0\1\0\15workspaces\1\0\0\1\0\2\tpath\30~/Studium/vault/Semester5\tname\14Semester5\1\0\2\tpath ~/Studium/misc_vaults/Books\tname\nBooks\nsetup\robsidian\frequire\0", "config", "obsidian.nvim")
+time([[Config for obsidian.nvim]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
