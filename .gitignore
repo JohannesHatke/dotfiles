@@ -1,1 +1,7 @@
 .config/obsidian/Cache/*
+.config/obsidian/DawnCache/
+.config/obsidian/Dictionaries/en-US-10-1.bdic
+.config/obsidian/WebStorage/
+.config/pavucontrol.ini
+.config/pulse/
+.config/vlc/
