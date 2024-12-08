@@ -15,6 +15,9 @@ local function weeklyNoteName(...)
 	end
 	return "weeklies/" .. "W" .. padding .. tostring(weeknumber) .. os.date("-%Y",os.time())
 end
+-- local function compile_markdown()
+--	
+-- end
 local function monthlyNoteName(...)
 	local offset = ...
 	if offset == nil then
@@ -28,6 +31,31 @@ local function monthlyNoteName(...)
 	end
 	return "monthlies/" .. os.date("%B-%Y",os.time{year=temp["year"], month = temp["month"], day = 1})
 end
+    
+
+local function change_to_callout()
+	local s_start = vim.fn.getpos("'<")
+	local s_end = vim.fn.getpos("'>")
+	local n_lines = math.abs(s_end[2] - s_start[2]) + 1
+	local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
+	lines[1] = string.sub(lines[1], 0 , -1)
+	if n_lines == 1 then
+	lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
+	else
+	lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
+	end
+	
+
+
+	-- lines[1] = "> [!info] " .. lines[1]
+	for i = 1, n_lines, 1 do
+		lines[i] = "> " .. lines[i]
+	end
+	vim.api.nvim_buf_set_text(0,s_start[2]-1,0,s_end[2],0,lines)
+end
+
+-- Bind to visual mode.
+-- vim.keymap.set('v', '<leader>D', change_to_callout , { noremap = true, silent = true })
 
 vim.cmd[[
 set conceallevel=1
@@ -42,3 +70,4 @@ vim.api.nvim_set_keymap('n', '<localleader>wt', ':ObsidianNew ' .. weeklyNoteNam
 vim.api.nvim_set_keymap('n', '<localleader>wm', ':ObsidianNew ' .. weeklyNoteName(1) , {} )
 vim.api.nvim_set_keymap('n', '<localleader>mt', ':ObsidianNew ' .. monthlyNoteName(0) , {} )
 vim.api.nvim_set_keymap('n', '<localleader>mm', ':ObsidianNew ' .. monthlyNoteName(1) , {} )
+vim.api.nvim_set_keymap('v', '<leader>d' ,':s/^/> /<cr>' , {} )
