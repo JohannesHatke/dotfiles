@@ -31,7 +31,33 @@ local function monthlyNoteName(...)
 	end
 	return "monthlies/" .. os.date("%B-%Y",os.time{year=temp["year"], month = temp["month"], day = 1})
 end
+
     
+local function upload_apy_note(ev, file)
+	print("CLOSED")
+	-- print(string.format('event fired: %s on file %s', vim.inspect(ev), ev["file"]))
+
+	local apy_add_command = string.format("apy add-from-file %s", ev["file"])
+	local handle = io.popen(apy_add_command)
+	local result = handle:read("*a")
+	handle:close()
+	print(result)
+
+	return true
+
+end
+local function new_apy_window()
+	local temp_script = "~/.config/nvim/misc/createtemp.py"
+	local handle = io.popen(temp_script)
+	local result = handle:read("*a")
+	handle:close()
+	local command = string.format(":vsplit %s",result)
+	print(command)
+	vim.cmd(command)
+	local win = vim.api.nvim_get_current_win()
+	local buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_create_autocmd({"BufWinLeave"}, {buffer = buf, callback = upload_apy_note} )
+end
 
 local function change_to_callout()
 	local s_start = vim.fn.getpos("'<")
@@ -71,3 +97,5 @@ vim.api.nvim_set_keymap('n', '<localleader>wm', ':ObsidianNew ' .. weeklyNoteNam
 vim.api.nvim_set_keymap('n', '<localleader>mt', ':ObsidianNew ' .. monthlyNoteName(0) , {} )
 vim.api.nvim_set_keymap('n', '<localleader>mm', ':ObsidianNew ' .. monthlyNoteName(1) , {} )
 vim.api.nvim_set_keymap('v', '<leader>d' ,':s/^/> /<cr>' , {} )
+-- vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>vsplit +terminal<cr>iapy add<cr>',  {})
+vim.api.nvim_set_keymap('n', '<leader>n', '', {callback=new_apy_window})

@@ -44,6 +44,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '-'
 
+
 -- NVIM-TREE
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -195,11 +196,15 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    'kvrohit/rasmus.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'rasmus'
-    end,
+      'sainnhe/gruvbox-material',
+      lazy = false,
+      priority = 1000,
+      config = function()
+        -- Optionally configure and load the colorscheme
+        -- directly inside the plugin declaration.
+        vim.g.gruvbox_material_enable_italic = true
+        vim.cmd.colorscheme('gruvbox-material')
+      end
   },
 
   {
@@ -258,6 +263,8 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  { 'mfussenegger/nvim-jdtls' },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -313,6 +320,8 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+vim.o.background = "dark"
 
 -- [[ Basic Keymaps ]]
 
@@ -427,7 +436,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'java' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -579,6 +588,10 @@ require('mason-lspconfig').setup()
 -- 
  
 vim.api.nvim_set_keymap('n', 'gS', '<cmd>ClangdSwitchSourceHeader<cr>'  , {} )
+
+vim.api.nvim_set_option_value('splitright',true , {})
+vim.api.nvim_set_option_value('splitbelow',true , {})
+vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>16split +terminal<cr>i',  {})
 
 
 local servers = {
